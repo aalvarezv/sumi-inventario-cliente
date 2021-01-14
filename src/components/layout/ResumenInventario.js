@@ -21,26 +21,20 @@ const ResumenInventario = () => {
          }
      }
 
-     let registrosFormat = []
-     useEffect(() => {
+    let registrosFormat = registros.map((registro, index) => {
+        return {
+            id: index + 1,
+            rack: registro.codigo_rack,
+            usuario: registro.usuario.nombre,
+            maquina: registro.codigo_maquina,
+            codigo_producto: registro.codigo_producto,
+            nombre_producto: registro.producto.descripcion,
+            fecha_hora_ultima_marca: registro.fecha_hora_ultima_marca,
+            lecturas: registro.lecturas,
+            total: registro.total,
+        }
+    })
 
-        registrosFormat = registros.map((registro, index) => {
-            return {
-                id: index + 1,
-                rack: registro.codigo_rack,
-                usuario: registro.usuario.nombre,
-                maquina: registro.codigo_maquina,
-                codigo_producto: registro.codigo_producto,
-                nombre_producto: registro.producto.descripcion,
-                fecha_hora_ultima_marca: registro.fecha_hora_ultima_marca,
-                lecturas: registro.lecturas,
-                total: registro.total,
-            }
-        })
-
-     }, [registros])
-
- 
     return ( 
         <Container>
             <Row className="d-flex justify-content-center my-5">
